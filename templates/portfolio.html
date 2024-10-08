@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Domingo Developments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Domingo Developments</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/reviews">Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="portfolio">
+        <h1>My Portfolio</h1>
+        <div class="portfolio-items">
+            <div class="portfolio-item">
+                <img src="{{ url_for('static', filename='DomingoDev.png') }}" alt="Project 1" class="project-image">
+                <h3>Domingo Developments</h3>
+                <p>Welcome to Domingo Developments! This is my portfolio website where I showcase my projects and skills as a developer. You can explore my work, read reviews, and easily get in touch with me through the contact form. I designed the site to have a clean and modern look for a seamless browsing experience. Enjoy your visit!</p>
+                <a href="https://github.com/Braeden-Grant/Domingo-Developments" target="_blank" class="btn">View on GitHub</a> 
+            </div>
+            <!--<div class="portfolio-item">
+                <img src="{{ url_for('static', filename='project2.png') }}" alt="Project 2" class="project-image">
+                <h3>Project 2</h3>
+                <p>This is a description for Project 2, outlining its features and functionalities.</p>
+                <a href="https://github.com/Braeden-Grant/project-2" target="_blank" class="btn">View on GitHub</a> 
+            </div>-->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Domingo Developments. All rights reserved.</p>
+    </footer>
+</body>
+</html>

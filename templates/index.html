@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/reviews">Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <img src="{{ url_for('static', filename='DomingoDev.png') }}" alt="Domingo Developments Logo" id="logo">
+        <p>I create stunning websites for businesses!</p>
+        <a href="/contact" class="btn">Get in Touch</a>
+    </section>
+
+    <section id="dedication">
+        <h2>Dedication to Meeting Customer Needs</h2>
+        <p>At the core of my web design philosophy is an unwavering commitment to ensuring that the unique needs of each client are not just met, but exceeded. I understand that every business has its own goals, values, and vision, and my approach is centered around tailoring solutions that align perfectly with these objectives. From the first consultation to the final launch of a project, my focus is on listening to my clients, understanding their specific challenges, and crafting a website that serves as a powerful tool for their business growth.</p>
+
+        <p>I believe that communication is key to delivering results that truly satisfy. Throughout the design process, I work closely with my clients, ensuring that they are involved in every step of the project. This collaborative approach allows me to adapt and make adjustments in real-time, ensuring that the final product reflects their vision. Whether it’s the overall structure of the site or the smallest design details, I ensure that the client’s voice is heard, and their needs are at the forefront of every decision.</p>
+
+        <p>Another critical aspect of my service is flexibility. I understand that business needs can evolve quickly, and the best solutions are those that can adapt over time. I build websites with scalability in mind, ensuring that as my clients' businesses grow, their online presence can grow with them. Whether it's adding new features, updating content, or making design tweaks, I am always ready to provide ongoing support to ensure my clients stay ahead of the curve.</p>
+
+        <p>Quality and reliability are non-negotiable in my work. I am dedicated to delivering websites that are not only visually appealing but also technically robust. From optimizing for mobile responsiveness to ensuring fast load times and seamless functionality, I make it a priority to develop websites that perform flawlessly across all devices and platforms. My goal is to ensure that the final product enhances the user experience and drives meaningful engagement, all while reflecting the professionalism of the business it represents.</p>
+
+        <p>In short, my clients can trust that their needs will always come first. I am not just here to design a website, but to build a solution that truly empowers businesses. With a strong focus on client satisfaction, clear communication, and technical excellence, I am dedicated to helping businesses achieve their goals through high-quality, customized web design that delivers long-term results.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Domingo Developments. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
