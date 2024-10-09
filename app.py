@@ -4,6 +4,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 import requests
+from twilio.rest import Client
 
 load_dotenv('email.env')
 
@@ -13,6 +14,11 @@ EMAIL_ADDRESS = os.getenv('EMAIL_USER')
 EMAIL_PASSWORD = os.getenv('EMAIL_PASS')
 GITHUB_USERNAME = os.getenv('GITHUB_USERNAME')
 GITHUB_API_URL = f'https://api.github.com/users/{GITHUB_USERNAME}/repos'
+
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
+MY_PHONE_NUMBER = os.getenv("MY_PHONE_NUMBER")
 
 reviews = []
 
@@ -56,6 +62,7 @@ def contact():
         email = request.form['email']
         message = request.form['message']
         send_email(name, email, message)
+        send_sms(name, email, message)
         return redirect(url_for('thank_you'))
     return render_template('contact.html')
 
@@ -78,6 +85,19 @@ def send_email(name, email, message):
             print("Email sent successfully!")
     except Exception as e:
         print(f"Error sending email: {e}")
+
+def send_sms(name, email, message):
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    sms_body = f"New Contact Form Submission\nName: {name}\nEmail: {email}\nMessage: {message}"
+    try:
+        message = client.messages.create(
+            body=sms_body,
+            from_=TWILIO_PHONE_NUMBER,
+            to=MY_PHONE_NUMBER
+        )
+        print("SMS sent successfully!")
+    except Exception as e:
+        print(f"Error sending SMS: {e}")
 
 if __name__ == '__main__':
     app.run(debug=True)
