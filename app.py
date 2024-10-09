@@ -5,6 +5,7 @@ import smtplib
 from email.mime.text import MIMEText
 import requests
 from twilio.rest import Client
+import json
 
 load_dotenv('email.env')
 
@@ -20,7 +21,21 @@ TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
 TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 MY_PHONE_NUMBER = os.getenv("MY_PHONE_NUMBER")
 
-reviews = []
+reviews_file = 'reviews.json'
+
+def load_reviews():
+    try:
+        with open(reviews_file, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
+def save_review(name, review):
+    reviews = load_reviews()
+    reviews.append({'name': name, 'review': review})
+    
+    with open(reviews_file, 'w') as file:
+        json.dump(reviews, file)
 
 @app.route('/')
 def home():
@@ -52,7 +67,10 @@ def reviews_page():
     if request.method == 'POST':
         name = request.form['name']
         review = request.form['review']
-        reviews.append({'name': name, 'review': review})
+        save_review(name, review)
+        return redirect(url_for('reviews_page'))
+    
+    reviews = load_reviews()
     return render_template('reviews.html', reviews=reviews)
 
 @app.route('/contact', methods=['GET', 'POST'])
