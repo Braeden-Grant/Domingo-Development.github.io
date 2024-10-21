@@ -22,22 +22,69 @@
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form action="{{ url_for('contact') }}" method="post">
+        <form action="{{ url_for('contact') }}" method="post" id="contactForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             <br>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <br>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+
+            <h3>Website Development Questionnaire</h3>
+
+            <label>Are you looking for a simple online brochure or a fully interactive website?</label><br>
+            <input type="radio" name="website-type" value="simple-brochure" required> Simple Online Brochure<br>
+            <input type="radio" name="website-type" value="interactive-website" required> Fully Interactive Website<br>
             <br>
-            <button type="submit">Send Message</button>
+
+            <label>Do you need help with e-commerce solutions?</label><br>
+            <input type="radio" name="ecommerce" value="yes" required> Yes<br>
+            <input type="radio" name="ecommerce" value="no" required> No<br>
+            <br>
+
+            <label>Do you sell physical products that need to be shipped/delivered?</label><br>
+            <input type="radio" name="physical-products" value="yes" required> Yes<br>
+            <input type="radio" name="physical-products" value="no" required> No<br>
+            <input type="radio" name="physical-products" value="not-sure" required> Not Sure<br>
+            <br>
+
+            <label for="pages-needed">What pages do you need?</label><br>
+            <textarea name="pages-needed" id="pages-needed" rows="4" cols="50" placeholder="Describe the pages you need" required></textarea><br>
+            <br>
+
+            <label for="website-needs">What needs do you have for your website?</label><br>
+            <textarea name="website-needs" id="website-needs" rows="4" cols="50" placeholder="Describe your needs" required></textarea><br>
+            <br>
+
+            <label>Do you need a news section to share updates with your clients?</label><br>
+            <input type="radio" name="news-section" value="true" required> True<br>
+            <input type="radio" name="news-section" value="false" required> False<br>
+            <br>
+
+            <label>Do you need a contact form or a contact page with just email and phone number?</label><br>
+            <input type="radio" name="contact-option" value="contact-form" required> Contact Form<br>
+            <input type="radio" name="contact-option" value="contact-page" required> Contact Page (Email and Phone)<br>
+            <br>
+
+            <label>Do you need an online portfolio to showcase your previous work?</label><br>
+            <input type="radio" name="portfolio" value="yes" required> Yes<br>
+            <input type="radio" name="portfolio" value="no" required> No<br>
+            <br>
+
+            <button type="submit" id="submitButton">Send Message</button>
         </form>
     </section>
 
     <footer>
         <p>&copy; 2024 Domingo Developments. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            let button = document.getElementById("submitButton");
+            button.disabled = true;
+            button.textContent = "Sending...";
+        });
+    </script>
 </body>
 </html>
